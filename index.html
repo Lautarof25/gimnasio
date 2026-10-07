@@ -54,27 +54,40 @@
         .home::before,
         .home::after {
             position: absolute;
-            z-index: -1;
             pointer-events: none;
             content: "";
         }
 
         .home::before {
             inset: 0;
+            z-index: -2;
             background-image: url("images_gim/SaveClip.App_821553076_17900216502667072_8545425022111592182_n.jpg");
             background-position: center 32%;
             background-size: cover;
             opacity: 0.58;
         }
 
+        .home-video {
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 32%;
+        }
+
         .home::after {
             inset: 0;
+            z-index: 0;
             background:
                 linear-gradient(180deg, rgb(7 7 7 / 58%) 0%, rgb(7 7 7 / 12%) 22%, rgb(7 7 7 / 25%) 42%, #090909 83%),
                 linear-gradient(90deg, rgb(7 7 7 / 78%) 0%, rgb(7 7 7 / 32%) 64%, rgb(7 7 7 / 9%) 100%);
         }
 
         .topbar {
+            position: relative;
+            z-index: 1;
             display: flex;
             width: 100%;
             align-items: center;
@@ -136,6 +149,8 @@
         }
 
         .hero {
+            position: relative;
+            z-index: 1;
             display: flex;
             width: min(100% - 40px, 1200px);
             flex: 1;
@@ -828,6 +843,10 @@
                 opacity: 0.74;
             }
 
+            .home-video {
+                object-position: center 35%;
+            }
+
             .home::after {
                 background:
                     linear-gradient(90deg, #090909 0%, rgb(9 9 9 / 92%) 28%, rgb(9 9 9 / 53%) 55%, rgb(9 9 9 / 10%) 100%),
@@ -1012,6 +1031,10 @@
                 background-position: 64% 34%;
             }
 
+            .home-video {
+                object-position: 64% 34%;
+            }
+
             .hero {
                 padding-bottom: 85px;
             }
@@ -1058,6 +1081,9 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
+            .home-video {
+                display: none;
+            }
 
             *,
             *::before,
@@ -1073,6 +1099,11 @@
 <body>
     <main>
         <div class="home">
+            <video class="home-video" autoplay muted loop playsinline preload="metadata"
+                poster="images_gim/SaveClip.App_821553076_17900216502667072_8545425022111592182_n.jpg"
+                aria-hidden="true">
+                <source src="videos/intro3.mp4" type="video/mp4">
+            </video>
             <header class="topbar">
                 <a class="brand" href="#inicio" aria-label="Gimnasio SR Sport Gym, inicio">
                     <img src="logo.jpg" alt="">
