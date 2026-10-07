@@ -353,6 +353,13 @@
                 #090909;
         }
 
+        .space-gallery {
+            border-top: 1px solid rgb(255 255 255 / 8%);
+            background:
+                radial-gradient(ellipse at 12% 25%, rgb(123 0 8 / 16%), transparent 40%),
+                #0d0d0d;
+        }
+
         .gallery-inner {
             width: min(100%, 1200px);
             margin: 0 auto;
@@ -1161,6 +1168,31 @@
                 <path d="M7 17 17 7M7 7h10v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery space-gallery" aria-labelledby="space-title">
+        <div class="gallery-inner">
+          <header class="gallery-heading">
+            <p class="eyebrow">Un espacio para entrenar</p>
+            <h2 id="space-title">Conocé <span>el gimnasio.</span></h2>
+            <p>Así es Gimnasio SR por fuera y por dentro: un espacio equipado para acompañarte en cada entrenamiento.</p>
+          </header>
+
+          <div class="gallery-grid">
+            <figure class="gallery-item">
+              <img src="maquinas/afuera.jpg" alt="Frente del gimnasio Gimnasio SR Sport Gym" loading="lazy" decoding="async">
+              <figcaption>Así nos encontrás</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="maquinas/maquinas1.jpg" alt="Vista interior del gimnasio con máquinas y zona de entrenamiento" loading="lazy" decoding="async">
+              <figcaption>Espacio para moverte</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="maquinas/maquinas2.jpg" alt="Equipamiento y máquinas de entrenamiento en el interior del gimnasio" loading="lazy" decoding="async">
+              <figcaption>Equipamiento para entrenar</figcaption>
+            </figure>
           </div>
         </div>
       </section>
