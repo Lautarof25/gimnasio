@@ -902,6 +902,45 @@
             min-height: 48px;
         }
 
+        .training-videos {
+            padding: 58px 20px 64px;
+            border-top: 1px solid rgb(255 255 255 / 8%);
+            background:
+                radial-gradient(ellipse at 18% 40%, rgb(123 0 8 / 18%), transparent 42%),
+                #0d0d0d;
+        }
+
+        .training-video-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .training-video {
+            overflow: hidden;
+            margin: 0;
+            border: 1px solid rgb(237 28 43 / 38%);
+            background: #111;
+        }
+
+        .training-video video {
+            display: block;
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            background: #090909;
+            object-fit: cover;
+        }
+
+        .training-video figcaption {
+            padding: 12px 14px;
+            border-top: 1px solid rgb(255 255 255 / 8%);
+            color: var(--paper);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
         @media (min-width: 700px) {
             .home::before {
                 background-position: center 35%;
@@ -1044,6 +1083,15 @@
                 padding: 82px 38px 88px;
             }
 
+            .training-videos {
+                padding: 82px 38px 88px;
+            }
+
+            .training-video-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 18px;
+            }
+
             .events-card {
                 padding: 42px 38px;
             }
@@ -1118,6 +1166,11 @@
             .progress-grid {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
                 gap: 20px;
+            }
+
+            .training-video-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 14px;
             }
 
             .plan-card-combo {
@@ -1459,6 +1512,47 @@
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="training-videos" aria-labelledby="training-videos-title" data-aos="fade-up">
+            <div class="gallery-inner">
+                <header class="gallery-heading">
+                    <p class="eyebrow">Entrená en SR</p>
+                    <h2 id="training-videos-title">En <span>acción.</span></h2>
+                    <p>Conocé algunas de las actividades que podés entrenar en el gimnasio.</p>
+                </header>
+
+                <div class="training-video-grid">
+                    <figure class="training-video">
+                        <video controls playsinline preload="none" poster="videos/posters/funcional.jpg">
+                            <source src="videos/funcional.mp4" type="video/mp4">
+                            Tu navegador no puede reproducir este video.
+                        </video>
+                        <figcaption>Funcional</figcaption>
+                    </figure>
+                    <figure class="training-video">
+                        <video controls playsinline preload="none" poster="videos/posters/pesas.jpg">
+                            <source src="videos/pesas.mp4" type="video/mp4">
+                            Tu navegador no puede reproducir este video.
+                        </video>
+                        <figcaption>Musculación</figcaption>
+                    </figure>
+                    <figure class="training-video">
+                        <video controls playsinline preload="none" poster="videos/posters/soga_ninios.jpg">
+                            <source src="videos/soga_ninios.mp4" type="video/mp4">
+                            Tu navegador no puede reproducir este video.
+                        </video>
+                        <figcaption>Entrenamiento infantil</figcaption>
+                    </figure>
+                    <figure class="training-video">
+                        <video controls playsinline preload="none" poster="videos/posters/kickboxing.jpg">
+                            <source src="videos/kickboxing.mp4" type="video/mp4">
+                            Tu navegador no puede reproducir este video.
+                        </video>
+                        <figcaption>Kickboxing</figcaption>
+                    </figure>
                 </div>
             </div>
         </section>
