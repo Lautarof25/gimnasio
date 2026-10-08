@@ -651,6 +651,127 @@
             text-transform: uppercase;
         }
 
+        .body-mass {
+            padding: 58px 20px 64px;
+            border-top: 1px solid rgb(255 255 255 / 8%);
+            background:
+                radial-gradient(ellipse at 84% 28%, rgb(123 0 8 / 16%), transparent 40%),
+                #090909;
+        }
+
+        .bmi-card {
+            display: grid;
+            gap: 22px;
+            padding: 20px;
+            border: 1px solid rgb(237 28 43 / 42%);
+            background: linear-gradient(145deg, rgb(35 35 35 / 92%), rgb(15 15 15 / 96%));
+        }
+
+        .bmi-form {
+            display: grid;
+            gap: 14px;
+        }
+
+        .bmi-fields {
+            display: grid;
+            gap: 12px;
+        }
+
+        .bmi-field {
+            display: grid;
+            gap: 8px;
+            color: var(--paper);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .bmi-field input {
+            width: 100%;
+            min-height: 50px;
+            padding: 0 13px;
+            border: 1px solid rgb(255 255 255 / 18%);
+            border-radius: 0;
+            background: #090909;
+            color: var(--paper);
+            font: 700 16px var(--body);
+        }
+
+        .bmi-field input:focus-visible {
+            outline: 2px solid var(--red);
+            outline-offset: 2px;
+        }
+
+        .bmi-field input::placeholder {
+            color: #777;
+        }
+
+        .bmi-submit {
+            min-height: 50px;
+            justify-self: start;
+            cursor: pointer;
+            font-family: var(--body);
+        }
+
+        .bmi-submit:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 4px;
+        }
+
+        .bmi-note {
+            margin: 0;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.55;
+        }
+
+        .bmi-result {
+            padding: 16px;
+            border-left: 2px solid var(--red);
+            background: rgb(0 0 0 / 35%);
+        }
+
+        .bmi-result[hidden] {
+            display: none;
+        }
+
+        .bmi-result-label {
+            margin: 0 0 6px;
+            color: var(--red);
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .bmi-result-value {
+            margin: 0;
+            color: var(--paper);
+            font-family: var(--display);
+            font-size: 2.5rem;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .bmi-result-value span {
+            color: var(--red);
+        }
+
+        .bmi-result-category {
+            margin: 8px 0 0;
+            color: var(--paper);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .bmi-result-advice {
+            margin: 9px 0 0;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
         .plans {
             padding: 58px 20px 64px;
             border-top: 1px solid rgb(255 255 255 / 8%);
@@ -1120,6 +1241,26 @@
                 padding: 82px 38px 88px;
             }
 
+            .body-mass {
+                padding: 82px 38px 88px;
+            }
+
+            .bmi-card {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                align-items: start;
+                gap: 24px;
+                padding: 26px;
+            }
+
+            .bmi-fields {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .bmi-submit,
+            .bmi-note {
+                grid-column: 1 / -1;
+            }
+
             .plans {
                 padding: 82px 38px 88px;
             }
@@ -1414,6 +1555,7 @@
                 <nav class="main-menu" id="main-menu" aria-label="Menú principal">
                     <a href="#inicio">Inicio</a>
                     <a href="#espacio">Espacio</a>
+                    <a href="#masa-corporal">IMC</a>
                     <a href="#planes">Planes</a>
                     <a href="#contacto">Contacto</a>
                 </nav>
@@ -1593,6 +1735,45 @@
                             decoding="async">
                         <figcaption>Celebramos cada avance</figcaption>
                     </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="body-mass" id="masa-corporal" aria-labelledby="body-mass-title" data-aos="fade-up">
+            <div class="gallery-inner">
+                <header class="gallery-heading">
+                    <p class="eyebrow">Conocé tu punto de partida</p>
+                    <h2 id="body-mass-title">Calculadora de <span>IMC.</span></h2>
+                    <p>Ingresá tu peso y altura para obtener una estimación de tu índice de masa corporal.</p>
+                </header>
+
+                <div class="bmi-card">
+                    <form class="bmi-form" id="bmi-form">
+                        <div class="bmi-fields">
+                            <label class="bmi-field" for="bmi-weight">
+                                Peso
+                                <input id="bmi-weight" name="weight" type="number" min="1" max="500" step="0.1"
+                                    inputmode="decimal" placeholder="Ej. 72,5" required>
+                            </label>
+                            <label class="bmi-field" for="bmi-height">
+                                Altura (cm)
+                                <input id="bmi-height" name="height" type="number" min="50" max="250" step="0.1"
+                                    inputmode="decimal" placeholder="Ej. 170" required>
+                            </label>
+                        </div>
+                        <button class="cta bmi-submit" type="submit">Calcular IMC</button>
+                        <p class="bmi-note">El IMC es una referencia general para personas adultas: no reemplaza una
+                            evaluación profesional ni considera por sí solo la composición corporal.</p>
+                    </form>
+
+                    <div class="bmi-result" id="bmi-result" role="status" aria-live="polite" aria-atomic="true"
+                        hidden>
+                        <p class="bmi-result-label">Tu resultado</p>
+                        <p class="bmi-result-value"><span id="bmi-value">0</span> IMC</p>
+                        <p class="bmi-result-category" id="bmi-category"></p>
+                        <p class="bmi-result-advice">Tomalo como una orientación y consultá con un profesional de la
+                            salud para interpretar tu caso.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1820,6 +2001,10 @@
         const topbar = document.querySelector(".topbar");
         const menuToggle = document.querySelector(".menu-toggle");
         const menuLinks = document.querySelectorAll(".main-menu a");
+        const bmiForm = document.querySelector("#bmi-form");
+        const bmiResult = document.querySelector("#bmi-result");
+        const bmiValue = document.querySelector("#bmi-value");
+        const bmiCategory = document.querySelector("#bmi-category");
 
         menuToggle.addEventListener("click", () => {
             const isOpen = topbar.classList.toggle("menu-open");
@@ -1842,6 +2027,25 @@
                 menuToggle.setAttribute("aria-label", "Abrir menú");
                 menuToggle.focus();
             }
+        });
+
+        bmiForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const weight = Number(bmiForm.elements.weight.value);
+            const height = Number(bmiForm.elements.height.value) / 100;
+            const bmi = weight / (height * height);
+            const category = bmi < 18.5
+                ? "Por debajo del rango de referencia"
+                : bmi < 25
+                    ? "Dentro del rango de referencia"
+                    : bmi < 30
+                        ? "Por encima del rango de referencia"
+                        : "Rango de obesidad según IMC";
+
+            bmiValue.textContent = bmi.toFixed(1).replace(".", ",");
+            bmiCategory.textContent = category;
+            bmiResult.hidden = false;
         });
 
         AOS.init({
