@@ -52,6 +52,8 @@
             min-width: 320px;
             min-height: 100%;
             background: var(--ink);
+            scroll-behavior: smooth;
+            scroll-padding-top: 20px;
         }
 
         body {
@@ -114,9 +116,52 @@
             z-index: 1;
             display: flex;
             width: 100%;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
+            gap: 12px;
             padding: 18px 20px;
+        }
+
+        .main-menu {
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 10px;
+            border: 1px solid rgb(255 255 255 / 10%);
+            border-radius: 999px;
+            background: rgb(9 9 9 / 42%);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 24px rgb(0 0 0 / 20%);
+        }
+
+        .main-menu a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 36px;
+            padding: 0 12px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            color: var(--paper);
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+        }
+
+        .main-menu a:hover {
+            border-color: rgb(255 255 255 / 18%);
+            background: rgb(237 28 43 / 10%);
+            transform: translateY(-1px);
+        }
+
+        .menu-toggle {
+            display: none;
         }
 
         .brand {
@@ -374,6 +419,8 @@
         .cta:focus-visible,
         .floating-whatsapp:focus-visible,
         .brand:focus-visible,
+        .menu-toggle:focus-visible,
+        .main-menu a:focus-visible,
         .social-link:focus-visible,
         .location:focus-visible {
             outline: 2px solid #fff;
@@ -961,6 +1008,17 @@
                 padding: 26px 38px;
             }
 
+            .main-menu {
+                gap: 6px;
+                padding: 8px 12px;
+            }
+
+            .main-menu a {
+                min-height: 38px;
+                padding: 0 14px;
+                font-size: 10px;
+            }
+
             .brand img {
                 width: 50px;
                 height: 50px;
@@ -1139,6 +1197,123 @@
             }
         }
 
+        @media (max-width: 699px) {
+            .topbar {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: center;
+                z-index: 6;
+            }
+
+            .topbar-note {
+                display: none;
+            }
+
+            .brand,
+            .menu-toggle {
+                position: relative;
+                z-index: 2;
+            }
+
+            .menu-toggle {
+                display: inline-flex;
+                width: 44px;
+                height: 44px;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid rgb(255 255 255 / 22%);
+                border-radius: 50%;
+                background: rgb(9 9 9 / 65%);
+                color: var(--paper);
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .menu-toggle-icon,
+            .menu-toggle-icon::before,
+            .menu-toggle-icon::after {
+                display: block;
+                width: 18px;
+                height: 2px;
+                border-radius: 2px;
+                background: currentColor;
+                transition: transform 180ms ease, top 180ms ease, background-color 180ms ease;
+            }
+
+            .menu-toggle-icon {
+                position: relative;
+            }
+
+            .menu-toggle-icon::before,
+            .menu-toggle-icon::after {
+                position: absolute;
+                left: 0;
+                content: "";
+            }
+
+            .menu-toggle-icon::before {
+                top: -6px;
+            }
+
+            .menu-toggle-icon::after {
+                top: 6px;
+            }
+
+            .menu-open .menu-toggle-icon {
+                background: transparent;
+            }
+
+            .menu-open .menu-toggle-icon::before {
+                top: 0;
+                transform: rotate(45deg);
+            }
+
+            .menu-open .menu-toggle-icon::after {
+                top: 0;
+                transform: rotate(-45deg);
+            }
+
+            .main-menu {
+                position: fixed;
+                z-index: 1;
+                inset: 0;
+                display: flex;
+                width: 100%;
+                height: 100vh;
+                height: 100dvh;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                max-height: none;
+                overflow-y: auto;
+                padding: 96px 24px 32px;
+                border-color: transparent;
+                border-radius: 0;
+                background:
+                    radial-gradient(ellipse at 50% 35%, rgb(123 0 8 / 20%), transparent 48%),
+                    rgb(9 9 9 / 98%);
+                box-shadow: none;
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transition: opacity 180ms ease, visibility 180ms, background-color 180ms ease;
+            }
+
+            .menu-open .main-menu {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            .main-menu a {
+                min-height: 52px;
+                justify-content: center;
+                padding: 0 24px;
+                font-size: 13px;
+            }
+        }
+
         @media (min-width: 1100px) {
             .home::before {
                 background-position: 64% 34%;
@@ -1230,6 +1405,19 @@
                         <span>Sport Gym</span>
                     </span>
                 </a>
+
+                <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"
+                    aria-controls="main-menu">
+                    <span class="menu-toggle-icon" aria-hidden="true"></span>
+                </button>
+
+                <nav class="main-menu" id="main-menu" aria-label="Menú principal">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#espacio">Espacio</a>
+                    <a href="#planes">Planes</a>
+                    <a href="#contacto">Contacto</a>
+                </nav>
+
                 <span class="topbar-note">Tu mejor versión te espera</span>
             </header>
 
@@ -1285,7 +1473,7 @@
             </section>
         </div>
 
-        <section class="gallery" aria-labelledby="gallery-title" data-aos="fade-up">
+        <section class="gallery" id="espacio" aria-labelledby="gallery-title" data-aos="fade-up">
             <div class="gallery-inner">
                 <header class="gallery-heading">
                     <p class="eyebrow">Entrenamos juntos</p>
@@ -1409,7 +1597,7 @@
             </div>
         </section>
 
-        <section class="plans" aria-labelledby="plans-title" data-aos="fade-up">
+        <section class="plans" id="planes" aria-labelledby="plans-title" data-aos="fade-up">
             <div class="gallery-inner">
                 <header class="gallery-heading">
                     <p class="eyebrow">Elegí tu ritmo</p>
@@ -1489,7 +1677,7 @@
             </div>
         </section>
 
-        <section class="events" aria-labelledby="events-title" data-aos="fade-right">
+        <section class="events" id="contacto" aria-labelledby="events-title" data-aos="fade-right">
             <div class="gallery-inner">
                 <header class="gallery-heading">
                     <p class="eyebrow">Comunidad SR</p>
@@ -1629,10 +1817,38 @@
     </a>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        const topbar = document.querySelector(".topbar");
+        const menuToggle = document.querySelector(".menu-toggle");
+        const menuLinks = document.querySelectorAll(".main-menu a");
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = topbar.classList.toggle("menu-open");
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+        });
+
+        menuLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                topbar.classList.remove("menu-open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Abrir menú");
+            });
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && topbar.classList.contains("menu-open")) {
+                topbar.classList.remove("menu-open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Abrir menú");
+                menuToggle.focus();
+            }
+        });
+
         AOS.init({
             debounceDelay: 50,
             throttleDelay: 99,
             delay: 200,
+            disable: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
         });
     </script>
 </body>
