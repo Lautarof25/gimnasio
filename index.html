@@ -891,6 +891,95 @@
                 #101010;
         }
 
+        .routines {
+            padding: 58px 20px 64px;
+            border-top: 1px solid rgb(255 255 255 / 8%);
+            background:
+                radial-gradient(ellipse at 12% 18%, rgb(123 0 8 / 18%), transparent 40%),
+                #0d0d0d;
+        }
+
+        .routines-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .routine-card {
+            display: flex;
+            min-height: 270px;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 21px;
+            border: 1px solid rgb(255 255 255 / 14%);
+            background: linear-gradient(145deg, rgb(35 35 35 / 92%), rgb(15 15 15 / 96%));
+        }
+
+        .routine-card-featured {
+            border-color: rgb(237 28 43 / 65%);
+            background: linear-gradient(145deg, rgb(77 8 13 / 56%), rgb(18 18 18 / 98%) 75%);
+        }
+
+        .routine-tag {
+            margin: 0 0 12px;
+            color: var(--red);
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .routine-card h3 {
+            margin: 0;
+            font-family: var(--display);
+            font-size: 1.9rem;
+            font-weight: 400;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .routine-detail {
+            margin: 12px 0 0;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.55;
+        }
+
+        .routine-features {
+            display: grid;
+            gap: 8px;
+            margin: 18px 0 22px;
+            padding: 0;
+            color: #e8e5e2;
+            font-size: 11px;
+            line-height: 1.4;
+            list-style: none;
+        }
+
+        .routine-features li::before {
+            margin-right: 8px;
+            color: var(--red);
+            content: "✓";
+            font-weight: 900;
+        }
+
+        .routine-card .cta {
+            width: 100%;
+            min-height: 48px;
+            justify-content: space-between;
+            margin-top: auto;
+            padding: 0 14px;
+            font-size: 9px;
+            letter-spacing: 0.1em;
+        }
+
+        .routines-note {
+            margin: 18px 0 0;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
         .plans-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -1390,6 +1479,20 @@
                 padding: 82px 38px 88px;
             }
 
+            .routines {
+                padding: 82px 38px 88px;
+            }
+
+            .routines-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 16px;
+            }
+
+            .routine-card {
+                min-height: 300px;
+                padding: 22px;
+            }
+
             .rules {
                 padding: 82px 38px 88px;
             }
@@ -1681,6 +1784,7 @@
                     <a href="#inicio">Inicio</a>
                     <a href="#espacio">Espacio</a>
                     <a href="#masa-corporal">IMC</a>
+                    <a href="#rutinas">Rutinas</a>
                     <a href="#planes">Planes</a>
                     <a href="#contacto">Contacto</a>
                 </nav>
@@ -1900,6 +2004,83 @@
                             salud para interpretar tu caso.</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="routines" id="rutinas" aria-labelledby="routines-title" data-aos="fade-up">
+            <div class="gallery-inner">
+                <header class="gallery-heading">
+                    <p class="eyebrow">Entrená donde estés</p>
+                    <h2 id="routines-title">Rutinas <span>online.</span></h2>
+                    <p>Elegí tu objetivo y escribinos. Te contamos qué opciones hay, su modalidad y valor para que
+                        puedas empezar a entrenar a tu ritmo.</p>
+                </header>
+
+                <div class="routines-grid">
+                    <article class="routine-card routine-card-featured">
+                        <p class="routine-tag">Construí tu base</p>
+                        <h3>Fuerza</h3>
+                        <p class="routine-detail">Una opción para enfocarte en los ejercicios de fuerza y progresar
+                            entrenamiento a entrenamiento.</p>
+                        <ul class="routine-features">
+                            <li>Enfoque en fuerza</li>
+                            <li>Para entrenar a tu ritmo</li>
+                            <li>Consultá modalidad y valor</li>
+                        </ul>
+                        <a class="cta cta-whatsapp"
+                            href="https://api.whatsapp.com/send/?phone=5491128847355&amp;text=Hola%2C%20quiero%20consultar%20por%20la%20rutina%20online%20de%20fuerza&amp;type=phone_number&amp;app_absent=0"
+                            target="_blank" rel="noopener noreferrer">
+                            Consultar rutina
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M5 12h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <article class="routine-card">
+                        <p class="routine-tag">Tu próximo desafío</p>
+                        <h3>Hipertrofia</h3>
+                        <p class="routine-detail">Una rutina orientada al trabajo de musculación y al desarrollo
+                            muscular.</p>
+                        <ul class="routine-features">
+                            <li>Enfoque en musculación</li>
+                            <li>Consultá opciones disponibles</li>
+                            <li>Conocé el valor por WhatsApp</li>
+                        </ul>
+                        <a class="cta cta-whatsapp"
+                            href="https://api.whatsapp.com/send/?phone=5491128847355&amp;text=Hola%2C%20quiero%20consultar%20por%20la%20rutina%20online%20de%20hipertrofia&amp;type=phone_number&amp;app_absent=0"
+                            target="_blank" rel="noopener noreferrer">
+                            Consultar rutina
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M5 12h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <article class="routine-card">
+                        <p class="routine-tag">Entrená a tu manera</p>
+                        <h3>En casa</h3>
+                        <p class="routine-detail">Consultá alternativas para organizar tus entrenamientos desde casa,
+                            según el equipo que tengas.</p>
+                        <ul class="routine-features">
+                            <li>Entrenamiento en casa</li>
+                            <li>Contanos con qué equipo contás</li>
+                            <li>Consultá modalidad y valor</li>
+                        </ul>
+                        <a class="cta cta-whatsapp"
+                            href="https://api.whatsapp.com/send/?phone=5491128847355&amp;text=Hola%2C%20quiero%20consultar%20por%20una%20rutina%20online%20para%20entrenar%20en%20casa&amp;type=phone_number&amp;app_absent=0"
+                            target="_blank" rel="noopener noreferrer">
+                            Consultar rutina
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M5 12h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </article>
+                </div>
+                <p class="routines-note">Escribinos para conocer precios, disponibilidad y cómo recibir tu rutina.</p>
             </div>
         </section>
 
@@ -2126,6 +2307,7 @@
                             <a href="#inicio">Inicio</a>
                             <a href="#espacio">Espacio</a>
                             <a href="#masa-corporal">IMC</a>
+                            <a href="#rutinas">Rutinas online</a>
                             <a href="#planes">Planes</a>
                             <a href="#contacto">Contacto</a>
                         </nav>
